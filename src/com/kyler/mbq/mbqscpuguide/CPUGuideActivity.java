@@ -2,7 +2,7 @@ package com.kyler.mbq.mbqscpuguide;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -19,6 +19,12 @@ import android.widget.ListView;
 import de.cketti.library.changelog.ChangeLog;
 
 public class CPUGuideActivity extends Activity {
+	Fragment Welcome = new Welcome();
+	Fragment CPUGovernors = new CPUGovernors();
+	Fragment IOSchedulers = new IOSchedulers();
+	Fragment TCP_Algorithms = new TCP_Algorithms();
+	Fragment AndroidTips = new Tips();	
+	Fragment Help = new Help();
 	
     private DrawerLayout mDrawerLayout;
     
@@ -28,18 +34,18 @@ public class CPUGuideActivity extends Activity {
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    
-	private String[] mWelcomePage;
+
 	private String[] mCategories;
-	private String[] mGovernors;
-	private String[] mIOSchedulers;
-	private String[] mTCPAlgorithms;
-	private String[] mAndroidTips;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cpuguide);
+        
+        ChangeLog cl = new ChangeLog(this);
+        if (cl.isFirstRun()) {
+            cl.getLogDialog().show();
+        }        
 
         mTitle = mDrawerTitle = getTitle();
         mCategories = getResources().getStringArray(R.array.Welcome_Page);
@@ -51,6 +57,7 @@ public class CPUGuideActivity extends Activity {
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, mCategories));
+        
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -62,7 +69,8 @@ public class CPUGuideActivity extends Activity {
                 R.drawable.ic_drawer,
                 R.string.drawer_open,
                 R.string.drawer_close
-                ) {
+                ) 
+        {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu();
@@ -73,6 +81,7 @@ public class CPUGuideActivity extends Activity {
                 invalidateOptionsMenu();
             }
         };
+        
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
@@ -83,7 +92,7 @@ public class CPUGuideActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.cpuguide, menu);
-        return true;
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -93,6 +102,7 @@ public class CPUGuideActivity extends Activity {
                 new ChangeLog(this).getLogDialog().show();
                 break;
             }
+            
             case R.id.menu_full_changelog: {
                 new ChangeLog(this).getFullLogDialog().show();
                 break;
@@ -110,18 +120,40 @@ public class CPUGuideActivity extends Activity {
     }     
 
 private void selectItem(int position) {
-
-    Fragment fragment = new CategoriesFragment();
-    Bundle args = new Bundle();
-    args.putInt(CategoriesFragment.ARG_CATEGORY, position);
-    fragment.setArguments(args);
-
-    FragmentManager fragmentManager = getFragmentManager();
-    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-
+	
+	 
+    FragmentTransaction ft = getFragmentManager().beginTransaction();
+    switch (position) {
+    
+    case 0:
+        ft.replace(R.id.content_frame, Welcome);
+        break;
+        
+    case 1:
+        ft.replace(R.id.content_frame, CPUGovernors);
+        break;        
+        
+    case 2:
+        ft.replace(R.id.content_frame, IOSchedulers);
+        break; 
+        
+    case 3:
+        ft.replace(R.id.content_frame, TCP_Algorithms);
+        break;  
+        
+    case 4:
+        ft.replace(R.id.content_frame, AndroidTips);
+        break;   
+        
+    case 5:
+        ft.replace(R.id.content_frame, Help);
+        break; 
+        
+    }
+    ft.commit();
+    
     mDrawerList.setItemChecked(position, true);
-    setTitle(mCategories[position]);
+
     mDrawerLayout.closeDrawer(mDrawerList);
 }
 
@@ -134,14 +166,12 @@ public void setTitle(CharSequence title) {
 @Override
 protected void onPostCreate(Bundle savedInstanceState) {
     super.onPostCreate(savedInstanceState);
-
     mDrawerToggle.syncState();
 }
 
 @Override
 public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
-
     mDrawerToggle.onConfigurationChanged(newConfig);
 }
 
@@ -157,8 +187,8 @@ public static class CategoriesFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_categories, container, false);
         int i = getArguments().getInt(ARG_CATEGORY);
-        String planet = getResources().getStringArray(R.array.Welcome_Page)[i];
-        getActivity().setTitle(planet);
+        String Categories = getResources().getStringArray(R.array.Welcome_Page)[i];
+        getActivity().setTitle(Categories);
         return rootView;
       }
    }
