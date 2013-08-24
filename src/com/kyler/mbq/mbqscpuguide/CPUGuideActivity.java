@@ -86,7 +86,7 @@ public class CPUGuideActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.cpuguide, menu);
-        return true;
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -138,14 +138,12 @@ public void setTitle(CharSequence title) {
 @Override
 protected void onPostCreate(Bundle savedInstanceState) {
     super.onPostCreate(savedInstanceState);
-
     mDrawerToggle.syncState();
 }
 
 @Override
 public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
-
     mDrawerToggle.onConfigurationChanged(newConfig);
 }
 
