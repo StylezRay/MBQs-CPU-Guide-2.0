@@ -16,21 +16,6 @@
         <item >Android Tips</item>
         <item >Help</item>
                
-    </string-array>
-    
-        <string-array 
-        
-        name="Governors">
-        
-        <item >Welcome111</item>
-        <item >CPU Governors</item>
-        <item >I/O Schedulers</item>
-        <item >TCP Algorithms</item>
-        <item >Android Tips</item>
-        <item >Help</item>
-               
-    </string-array>
-    
     <!-- Changelog -->
     <string name="menu_whats_new">What\'s New</string>
     <string name="menu_full_changelog">Full ChangeLog</string> 
