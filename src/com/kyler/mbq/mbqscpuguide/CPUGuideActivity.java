@@ -28,18 +28,18 @@ public class CPUGuideActivity extends Activity {
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-
+    
+	private String[] mWelcomePage;
 	private String[] mCategories;
+	private String[] mGovernors;
+	private String[] mIOSchedulers;
+	private String[] mTCPAlgorithms;
+	private String[] mAndroidTips;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cpuguide);
-        
-        ChangeLog cl = new ChangeLog(this);
-        if (cl.isFirstRun()) {
-            cl.getLogDialog().show();
-        }        
 
         mTitle = mDrawerTitle = getTitle();
         mCategories = getResources().getStringArray(R.array.Welcome_Page);
@@ -51,7 +51,6 @@ public class CPUGuideActivity extends Activity {
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, mCategories));
-        
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -63,8 +62,7 @@ public class CPUGuideActivity extends Activity {
                 R.drawable.ic_drawer,
                 R.string.drawer_open,
                 R.string.drawer_close
-                ) 
-        {
+                ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu();
@@ -75,7 +73,6 @@ public class CPUGuideActivity extends Activity {
                 invalidateOptionsMenu();
             }
         };
-        
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
@@ -86,7 +83,7 @@ public class CPUGuideActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.cpuguide, menu);
-        return super.onPrepareOptionsMenu(menu);
+        return true;
     }
 
     @Override
@@ -96,7 +93,6 @@ public class CPUGuideActivity extends Activity {
                 new ChangeLog(this).getLogDialog().show();
                 break;
             }
-            
             case R.id.menu_full_changelog: {
                 new ChangeLog(this).getFullLogDialog().show();
                 break;
@@ -138,12 +134,14 @@ public void setTitle(CharSequence title) {
 @Override
 protected void onPostCreate(Bundle savedInstanceState) {
     super.onPostCreate(savedInstanceState);
+
     mDrawerToggle.syncState();
 }
 
 @Override
 public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
+
     mDrawerToggle.onConfigurationChanged(newConfig);
 }
 
@@ -159,8 +157,8 @@ public static class CategoriesFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_categories, container, false);
         int i = getArguments().getInt(ARG_CATEGORY);
-        String Categories = getResources().getStringArray(R.array.Welcome_Page)[i];
-        getActivity().setTitle(Categories);
+        String planet = getResources().getStringArray(R.array.Welcome_Page)[i];
+        getActivity().setTitle(planet);
         return rootView;
       }
    }

@@ -5,17 +5,38 @@
     <string name="action_settings">Settings</string>
     
     <!-- Welcome! -->
-    <string-array 
-        
-        name="Welcome_Page">
+    <string-array name="Welcome_Page">
         
         <item >Welcome</item>
-        <item >CPU Governors</item>
-        <item >I/O Schedulers</item>
-        <item >TCP Algorithms</item>
-        <item >Android Tips</item>
-        <item >Help</item>
-               
+        
+    </string-array>
+    
+    <!-- CPU Governors -->
+    <string-array name="CPU_Governors">
+        
+        
+        
+    </string-array>
+    
+    <!-- I/O Schedulers -->
+    <string-array name="IO_Schedulers">
+        
+        
+        
+    </string-array>
+    
+    <!-- Android Tips -->
+    <string-array name="Android_Tips">
+        
+        
+        
+    </string-array>
+    
+    <!-- TCP Algorithms -->
+    <string-array name="TCP_Algorithms">
+        
+        
+        
     </string-array>
     
     <!-- Changelog -->
