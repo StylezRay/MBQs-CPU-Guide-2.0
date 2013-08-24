@@ -120,14 +120,13 @@ public class CPUGuideActivity extends Activity {
     }     
 
 private void selectItem(int position) {
-	
-	 
+		 
     FragmentTransaction ft = getFragmentManager().beginTransaction();
     switch (position) {
     
     case 0:
         ft.replace(R.id.content_frame, Welcome);
-        break;
+        break;     
         
     case 1:
         ft.replace(R.id.content_frame, CPUGovernors);

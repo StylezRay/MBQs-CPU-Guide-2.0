@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class CPUGovernors extends Fragment {
-	
+
     final String[] items = new String[] 
     		{ 		
     		"Ondemand",
@@ -44,6 +44,6 @@ public class CPUGovernors extends Fragment {
         ListView list = (ListView)view.findViewById(R.id.GovLV);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
         list.setAdapter(adapter);
-        return view;
+		return view; 
     }
-}	
+}
