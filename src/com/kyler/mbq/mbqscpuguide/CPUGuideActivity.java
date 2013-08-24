@@ -161,8 +161,8 @@ public static class CategoriesFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_categories, container, false);
         int i = getArguments().getInt(ARG_CATEGORY);
-        String planet = getResources().getStringArray(R.array.Welcome_Page)[i];
-        getActivity().setTitle(planet);
+        String Categories = getResources().getStringArray(R.array.Welcome_Page)[i];
+        getActivity().setTitle(Categories);
         return rootView;
       }
    }
