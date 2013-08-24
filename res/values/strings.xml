@@ -2,27 +2,27 @@
 <resources>
 
     <string name="app_name">MBQs CPU Guide</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Einstellungen</string>
     
     <!-- Welcome! -->
     <string-array 
         
         name="Welcome_Page">
         
-        <item >Welcome</item>
+        <item >Willkommen</item>
         <item >CPU Governors</item>
         <item >I/O Schedulers</item>
         <item >TCP Algorithms</item>
-        <item >Android Tips</item>
-        <item >Help</item>
+        <item >Android Tipps</item>
+        <item >Hilfe</item>
                
     <!-- Changelog -->
-    <string name="menu_whats_new">What\'s New</string>
-    <string name="menu_full_changelog">Full ChangeLog</string> 
+    <string name="menu_whats_new">Neuigkeiten</string>
+    <string name="menu_full_changelog">Komplette Änderungshistorie</string> 
     
     <!-- NavDrawer open/close toggle(s) -->
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="welcome">Welcome to MBQs CPU Guide!</string>    
+    <string name="drawer_open">Öffne navigation drawer</string>
+    <string name="drawer_close">Schließe navigation drawer</string>
+    <string name="welcome">Willkommen zu MBQs CPU Guide!</string>    
 
 </resources>
